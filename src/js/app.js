@@ -7,3 +7,17 @@ export class Validator {
     return true;
   }
 }
+
+export function formatPhoneNumber(phone) {
+  const cleaned = phone.replace(/[^\d+]/g, '');
+
+  if (cleaned.match(/^(\+?7|8)\d{10}$/)) {
+    return `+7${cleaned.slice(-10)}`; // +7 + 10 цифр
+  }
+
+  if (cleaned.startsWith('+')) {
+    return cleaned;
+  }
+
+  return null;
+}
